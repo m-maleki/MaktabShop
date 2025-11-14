@@ -1,0 +1,37 @@
+﻿@page
+@model MaktabShop.Presentations.RazorPages.Pages.Products.UpdateModel
+@{
+}
+<div class="container px-5 my-5">
+    <form method="post">
+
+
+ 
+            <input class="form-control" asp-for="Product.Id" type="hidden" placeholder="Name" />
+
+        <div class="form-floating mb-3">
+            <input class="form-control" asp-for="Product.Name" type="text" placeholder="Name" data-sb-validations="required" />
+            <label for="name">Name</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input class="form-control" asp-for="Product.Price" type="text" placeholder="Price" data-sb-validations="required" />
+            <label for="price">Price</label>
+        </div>
+        <div class="form-floating mb-3">
+            <textarea class="form-control" asp-for="Product.Description" type="text" placeholder="Description" style="height: 10rem;" data-sb-validations="required"></textarea>
+            <label for="description">Description</label>
+        </div>
+        <div class="form-floating mb-3">
+            <select class="form-select" asp-for="Product.CategoryId" aria-label="Category">
+                @foreach (var item in Model.Categories)
+                {
+                    <option value="@item.Id">@item.Name</option>
+                }
+            </select>
+            <label for="category">Category</label>
+        </div>
+        <div class="d-grid">
+            <button class="btn btn-primary btn-lg" id="submitButton" type="submit">Submit</button>
+        </div>
+    </form>
+</div>

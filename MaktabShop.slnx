@@ -1,0 +1,17 @@
+<Solution>
+  <Folder Name="/src/" />
+  <Folder Name="/src/01.Domain/" />
+  <Folder Name="/src/01.Domain/Core/">
+    <Project Path="src/01.Domain/Core/MaktabShop.Domain.Core/MaktabShop.Domain.Core.csproj" />
+  </Folder>
+  <Folder Name="/src/01.Domain/Service/">
+    <Project Path="src/01.Domain/Service/MaktabShop.Domain.Service.AppServices/MaktabShop.Domain.Service.AppServices.csproj" />
+    <Project Path="src/01.Domain/Service/MaktabShop.Domain.Service.Services/MaktabShop.Domain.Service.Services.csproj" />
+  </Folder>
+  <Folder Name="/src/02.Infrastructure/">
+    <Project Path="src/02.Infrastructure/MaktabShop.Infrastructure.EfCore/MaktabShop.Infrastructure.EfCore.csproj" />
+  </Folder>
+  <Folder Name="/src/03.Presentations/">
+    <Project Path="src/03.Presentations/MaktabShop.Presentations.RazorPages/MaktabShop.Presentations.RazorPages.csproj" />
+  </Folder>
+</Solution>
