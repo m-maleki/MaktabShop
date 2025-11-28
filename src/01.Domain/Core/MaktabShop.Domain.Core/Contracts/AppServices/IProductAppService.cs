@@ -4,10 +4,10 @@ namespace MaktabShop.Domain.Core.Contracts.AppServices
 {
     public interface IProductAppService
     {
-        public void Create(Product product);
-        public void Update(Product product);
-        public void Delete(int productId);
-        public Product GetById(int productId);
-        public List<Product> GetAll();
+        public Task Create(Product product,CancellationToken cancellationToken);
+        public Task Update(Product productc,CancellationToken cancellationToken);
+        public Task Delete(int productId,CancellationToken cancellationToken);
+        public Task<Product> GetById(int productId,CancellationToken cancellationToken);
+        public Task<List<Product>> GetAll(CancellationToken cancellationToken);
     }
 }

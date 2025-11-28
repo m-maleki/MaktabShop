@@ -4,10 +4,10 @@ namespace MaktabShop.Domain.Core.Contracts.Repositories
 {
     public interface IProductRepository
     {
-        public void Create(Product product);
-        public void Update(Product product);
-        public void Delete(int productId);
-        public Product GetById(int productId);
-        public List<Product> GetAll();
+        public Task Create(Product product,CancellationToken cancellationToken);
+        public Task Update(Product product, CancellationToken cancellationToken);
+        public Task Delete(int productId,CancellationToken cancellationToken);
+        public Task<Product> GetById(int productId,CancellationToken cancellationToken);
+        public Task<List<Product>> GetAll(CancellationToken cancellationToken);
     }
 }

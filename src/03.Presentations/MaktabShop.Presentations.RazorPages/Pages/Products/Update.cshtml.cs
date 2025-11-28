@@ -3,25 +3,26 @@ using MaktabShop.Domain.Core.Entities;
 using MaktabShop.Domain.Service.AppServices;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Threading.Tasks;
 
 namespace MaktabShop.Presentations.RazorPages.Pages.Products
 {
-    public class UpdateModel (IProductAppService  productAppService ,ICategoryAppService categoryAppService) : PageModel
+    public class UpdateModel(IProductAppService productAppService, ICategoryAppService categoryAppService) : PageModel
     {
         [BindProperty]
         public Product Product { get; set; }
 
         public List<Category> Categories { get; set; }
-        public void OnGet(int id)
+        public async Task OnGet(int id, CancellationToken cancellationToken)
         {
-            Product = productAppService.GetById(id);
-            Categories = categoryAppService.GetCategories();
+            Product = await productAppService.GetById(id, cancellationToken);
+            Categories = await categoryAppService.GetCategories(cancellationToken);
         }
 
 
-        public IActionResult OnPost()
+        public async Task<IActionResult> OnPost(CancellationToken cancellationToken)
         {
-            productAppService.Update(Product);
+            await productAppService.Update(Product, cancellationToken);
             return RedirectToPage("Index");
         }
     }

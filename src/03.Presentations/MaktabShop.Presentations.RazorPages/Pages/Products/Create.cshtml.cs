@@ -11,14 +11,14 @@ namespace MaktabShop.Presentations.RazorPages.Pages.Products
         public Product Product { get; set; }
 
         public List<Category> Categories { get; set; }
-        public void OnGet()
+        public async Task OnGet(CancellationToken cancellationToken)
         {
-            Categories = categoryAppService.GetCategories();
+            Categories = await categoryAppService.GetCategories(cancellationToken);
         }
 
-        public IActionResult OnPost()
+        public async Task<IActionResult> OnPost(CancellationToken cancellationToken)
         {
-            productAppService.Create(Product);
+           await productAppService.Create(Product, cancellationToken);
             return RedirectToPage("Index");
         }
     }

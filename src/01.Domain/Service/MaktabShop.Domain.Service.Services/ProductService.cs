@@ -1,35 +1,36 @@
 ﻿using MaktabShop.Domain.Core.Contracts.Repositories;
 using MaktabShop.Domain.Core.Contracts.Services;
 using MaktabShop.Domain.Core.Entities;
+using System.Threading.Tasks;
 
 namespace MaktabShop.Domain.Service.Services
 {
 
     public class ProductService (IProductRepository productRepository) : IProductService
     {
-        public void Create(Product product)
+        public async Task Create(Product product,CancellationToken cancellationToken)
         {
-            productRepository.Create(product);
+           await productRepository.Create(product, cancellationToken);
         }
 
-        public void Delete(int productId)
+        public async Task Delete(int productId,CancellationToken cancellationToken)
         {
-            productRepository.Delete(productId);
+           await productRepository.Delete(productId, cancellationToken);
         }
 
-        public List<Product> GetAll()
+        public async Task<List<Product>> GetAll(CancellationToken cancellationToken)
         {
-            return productRepository.GetAll();
+           return await productRepository.GetAll(cancellationToken);
         }
 
-        public Product GetById(int productId)
+        public async Task<Product> GetById(int productId,CancellationToken cancellationToken)
         {
-            return productRepository.GetById(productId);
+            return await productRepository.GetById(productId, cancellationToken);
         }
 
-        public void Update(Product product)
+        public async Task Update(Product product,CancellationToken cancellationToken)
         {
-            productRepository.Update(product);
+          await  productRepository.Update(product, cancellationToken);
         }
     }
 }

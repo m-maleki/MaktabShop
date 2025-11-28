@@ -2,6 +2,7 @@ using MaktabShop.Domain.Core.Contracts.AppServices;
 using MaktabShop.Domain.Core.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Threading.Tasks;
 
 namespace MaktabShop.Presentations.RazorPages.Pages.Products
 {
@@ -10,14 +11,14 @@ namespace MaktabShop.Presentations.RazorPages.Pages.Products
         [BindProperty]
         public Product Product { get; set; }
 
-        public void OnGet(int id)
+        public async Task OnGet(int id,CancellationToken cancellationToken)
         {
-            Product = productAppService.GetById(id);
+            Product = await productAppService.GetById(id, cancellationToken);
         }
 
-        public IActionResult OnPost()
+        public async Task<IActionResult> OnPost(CancellationToken cancellationToken)
         {
-            productAppService.Delete(Product.Id);
+           await productAppService.Delete(Product.Id, cancellationToken);
             return RedirectToPage("Index");
         }
 

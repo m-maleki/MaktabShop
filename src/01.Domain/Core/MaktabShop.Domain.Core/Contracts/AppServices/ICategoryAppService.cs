@@ -7,7 +7,7 @@ namespace MaktabShop.Domain.Core.Contracts.AppServices
 {
     public interface ICategoryAppService
     {
-        public List<Category> GetCategories();
+        public Task<List<Category>> GetCategories(CancellationToken cancellationToken);
 
     }
 }

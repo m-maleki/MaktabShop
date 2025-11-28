@@ -4,6 +4,6 @@ namespace MaktabShop.Domain.Core.Contracts.Repositories
 {
     public interface ICategoryRepository
     {
-        public List<Category> GetCategories();
+        public Task<List<Category>> GetCategories(CancellationToken cancellationToken);
     }
 }

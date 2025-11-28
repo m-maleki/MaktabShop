@@ -1,34 +1,35 @@
 ﻿using MaktabShop.Domain.Core.Contracts.AppServices;
 using MaktabShop.Domain.Core.Contracts.Services;
 using MaktabShop.Domain.Core.Entities;
+using System.Threading.Tasks;
 
 namespace MaktabShop.Domain.Service.AppServices
 {
-    public class ProductAppService (IProductService productService) : IProductAppService
+    public class ProductAppService(IProductService productService) : IProductAppService
     {
-        public void Create(Product product)
+        public async Task Create(Product product, CancellationToken cancellationToken)
         {
-            productService.Create(product);
+            await productService.Create(product, cancellationToken);
         }
 
-        public void Delete(int productId)
+        public async Task Delete(int productId, CancellationToken cancellationToken)
         {
-            productService.Delete(productId);
+           await productService.Delete(productId, cancellationToken);
         }
 
-        public List<Product> GetAll()
+        public async Task<List<Product>> GetAll(CancellationToken cancellationToken)
         {
-            return productService.GetAll();
+            return await productService.GetAll(cancellationToken);
         }
 
-        public Product GetById(int productId)
+        public async Task<Product> GetById(int productId, CancellationToken cancellationToken)
         {
-            return productService.GetById(productId);
+            return await productService.GetById(productId, cancellationToken);
         }
 
-        public void Update(Product product)
+        public async Task Update(Product product, CancellationToken cancellationToken)
         {
-            productService.Update(product);
+            await productService.Update(product, cancellationToken);
         }
     }
 }
